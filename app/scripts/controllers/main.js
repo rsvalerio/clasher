@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('clasherApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, simpleLogin) {
+    
+    // $scope.logout = function () {
+    //   simpleLogin.logout();
+    // };
+
+
   });

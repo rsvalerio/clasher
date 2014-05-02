@@ -1,0 +1,8 @@
+<ul class="nav nav-pills pull-right" bs-navbar>
+  <li data-match-route="/main"><a ng-href="#">Home</a></li>
+  <li data-match-route="/about"><a ng-href="#">About</a></li>
+  <li data-match-route="/contact"><a ng-href="#">Contact</a></li>
+  <li ng-show="profile.user"><a href="#" ng-click="logout()">Log Out</a></li>
+  <li data-match-route="/login" ng-hide="profile.user"><a href="#/login">Log In</a></li>
+</ul>
+<h3 class="text-muted">Clasher</h3>
