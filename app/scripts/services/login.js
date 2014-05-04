@@ -5,7 +5,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
     simpleLogin.init();
   })
 
-  .factory('simpleLogin', function($rootScope, $firebaseSimpleLogin, firebaseRef, $timeout) {
+  .factory('simpleLogin', function($rootScope, $firebaseSimpleLogin, fbase, $timeout) {
     function assertAuth() {
       if( auth === null ) { throw new Error('Must call loginService.init() before using its methods'); }
     }
@@ -13,7 +13,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
     var auth = null;
     return {
       init: function() {
-        auth = $firebaseSimpleLogin(firebaseRef());
+        auth = $firebaseSimpleLogin(fbase());
         return auth;
       },
 
@@ -30,7 +30,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
        */
       login: function(provider, callback) {
         assertAuth();
-        auth.$login(provider, {rememberMe: true, preferRedirect: true}).then(function(user) {
+        auth.$login(provider, {rememberMe: true, preferRedirect: true, scope: 'email'}).then(function(user) {
 
           // console.log(user);
 
@@ -41,21 +41,6 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
             });
           }
         }, callback);
-      },
-      login2: function(provider) {
-        assertAuth();
-        return auth.$login(provider, {rememberMe: true, preferRedirect: true});
-        // .then(function(user) {
-
-        //   console.log(user);
-
-        //   if( callback ) {
-        //     //todo-bug https://github.com/firebase/angularFire/issues/199
-        //     $timeout(function() {
-        //       callback(null, user);
-        //     });
-        //   }
-        // }, callback);
       }
 
 

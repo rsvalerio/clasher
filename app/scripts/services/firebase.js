@@ -3,7 +3,7 @@
 angular.module('angularfire.firebase', ['firebase'])
 
   // A quick wrapper to abstract creating Firebase references
-  .factory('firebaseRef', function (Firebase, FBURL) {
+  .factory('fbase', function (Firebase, FBURL) {
     function pathRef(args) {
       for (var i = 0; i < args.length; i++) {
         if (typeof(args[i]) === 'object') {
@@ -16,13 +16,13 @@ angular.module('angularfire.firebase', ['firebase'])
     /**
      * Example:
      * <code>
-     *    function(firebaseRef) {
-     *       var ref = firebaseRef('path/to/data');
+     *    function(fbase) {
+     *       var ref = fbase('path/to/data');
      *    }
      * </code>
      *
      * @function
-     * @name firebaseRef
+     * @name fbase
      * @param {String|Array...} path relative path to the root folder in Firebase instance
      * @return a Firebase instance
      */
@@ -34,7 +34,7 @@ angular.module('angularfire.firebase', ['firebase'])
 /**
  * A quick wrapper to abstract creating $firebase objects (see example below)
  */
-  .service('syncData', function ($firebase, firebaseRef) {
+  .service('syncData', function ($firebase, fbase) {
     /**
      * Create a $firebase reference with just a relative path. For example:
      *
@@ -55,7 +55,7 @@ angular.module('angularfire.firebase', ['firebase'])
      * @return a Firebase instance
      */
     return function (path, limit) {
-      var ref = firebaseRef(path);
+      var ref = fbase(path);
       if( limit ) {
         ref = ref.limit(limit);
       }

@@ -1,8 +1,13 @@
-<ul class="nav nav-pills pull-right" bs-navbar>
-  <li data-match-route="/main"><a ng-href="#">Home</a></li>
-  <li data-match-route="/about"><a ng-href="#">About</a></li>
-  <li data-match-route="/contact"><a ng-href="#">Contact</a></li>
-  <li ng-show="profile.user"><a href="#" ng-click="logout()">Log Out</a></li>
-  <li data-match-route="/login" ng-hide="profile.user"><a href="#/login">Log In</a></li>
-</ul>
-<h3 class="text-muted">Clasher</h3>
+  <ul class="nav nav-pills pull-right" bs-navbar>
+    <li data-match-route="/main"><a ng-href="#">Home</a></li>
+    <li ng-show="profile.user"><a href="#" ng-click="logout()" ng-controller="LoginCtrl">Log Out</a></li>
+    <li data-match-route="/login" ng-hide="profile.user"><a href="#/login">Log In</a></li>
+  </ul>
+  <span ng-show="profile.user">
+    <span class="pull-left cover">
+      <div class="circle" style="background-image: url('{{profile.userPhoto}}')"></div>
+      <!-- <div class="circle" style="background-image: url('images/cover.jpg')"></div> -->
+    </span>
+    <h4 class="top-name">{{profile.user.name}}</h4>
+  </span>
+  <h3 ng-hide="profile.user" class="text-muted">Clasher</h3>

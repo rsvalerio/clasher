@@ -41,6 +41,9 @@
     },
 
     _login: function () {
+      
+      console.log(this._rootScope.profile);
+
       this._authenticated = true;
       if (this._redirectTo) {
         this._redirect(this._redirectTo);

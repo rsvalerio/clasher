@@ -22,9 +22,21 @@ angular
       .when('/login', {
         authRequired: false, // if true, must log in before viewing this page
         templateUrl: 'views/login.html',
-        controller: 'LoginController'
+        controller: 'LoginCtrl'
+      })
+      .when('/', {
+        redirectTo: '/main'
       })
       .otherwise({
         redirectTo: '/main'
       });
+  })
+  .run(function ($rootScope, simpleLogin) {
+    simpleLogin.logout();
+    // $rootScope.profile = {
+    //   user: {
+    //     name: 'Rodrigo Valerio'
+    //   }
+    // };
+    // console.log($rootScope);
   });
