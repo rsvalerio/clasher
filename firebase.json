@@ -1,4 +1,4 @@
 {
   "firebase": "clasher",
-  "public": "app"
+  "public": "dist"
 }
