@@ -1,0 +1,14 @@
+
+<form>
+<div class="form-group">
+  <label for="inputBuildingType" class="col-sm-2 control-label">BuildingType:</label>
+  <div class="col-sm-2">
+
+    <button type="button" class="btn btn-default" ng-model="selectedBuildingType" data-html="1" ng-options="buildingType.label for buildingType in buildingTypeSelectObject" bs-select>
+      Building Type <span class="caret"></span>
+    </button>
+
+  </div>
+</div>
+</form>
+{{bType}}

@@ -6,6 +6,7 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
+    'ngAnimate',
     'mgcrea.ngStrap',
     'firebase',
     'simpleLoginTools',
@@ -26,6 +27,10 @@ angular
       })
       .when('/', {
         redirectTo: '/main'
+      })
+      .when('/building', {
+        templateUrl: 'views/building.html',
+        controller: 'BuildingCtrl'
       })
       .otherwise({
         redirectTo: '/main'
