@@ -1,0 +1,56 @@
+<form class="form-horizontal" role="form" name="form">
+
+  <div class="form-group has-feedback" ng-class="{'has-error': form.id.$invalid, 'has-success': !form.id.$invalid}">
+    <label for="inputId" class="col-sm-3 control-label">Id:</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input type="text" ng-model="id" name="id" id="id" class="form-control" required="required">
+        <span class="input-group-btn">
+          <button ng-click="sync()" class="btn btn-default" type="button">Sync</button>
+          <button ng-click="clear()" class="btn btn-default" type="button">Clear</button>
+        </span>
+      </div>      
+    </div>
+  </div>
+  <div class="form-group has-feedback" ng-class="{'has-error': form.range.$invalid, 'has-success': !form.range.$invalid}">
+    <label for="inputRange" class="col-sm-3 control-label">Range:</label>
+    <div class="col-sm-9">
+      <input type="text" ng-model="dBuilding.range" name="range" id="range" class="form-control" required="required">
+      <span ng-class="{'glyphicon-remove': form.range.$invalid, 'glyphicon-ok': !form.range.$invalid}" class="glyphicon form-control-feedback"></span>
+    </div>
+  </div>
+
+  <div class="form-group has-feedback" ng-class="{'has-error': form.speed.$invalid, 'has-success': !form.speed.$invalid}">
+    <label for="inputSpeed" class="col-sm-3 control-label">Speed:</label>
+    <div class="col-sm-9">
+      <input type="text" ng-model="dBuilding.speed" name="speed" id="speed" class="form-control" required="required">
+      <span ng-class="{'glyphicon-remove': form.speed.$invalid, 'glyphicon-ok': !form.speed.$invalid}" class="glyphicon form-control-feedback"></span>
+    </div>
+  </div>
+
+  <div class="form-group has-feedback" ng-class="{'has-error': form.damageType.$invalid, 'has-success': !form.damageType.$invalid}">
+    <label for="inputDamageType" class="col-sm-3 control-label">DamageType:</label>
+    <div class="col-sm-9">
+      <input type="text" ng-model="dBuilding.damageType" name="damageType" id="damageType" class="form-control" required="required">
+      <span ng-class="{'glyphicon-remove': form.damageType.$invalid, 'glyphicon-ok': !form.damageType.$invalid}" class="glyphicon form-control-feedback"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="unitTypeTargeted" class="col-sm-3 control-label">Unit Type Targeted</label>
+    <div class="col-sm-9">
+      <button data-placeholder="Select Unit Type Targeted " type="button" class="btn btn-default" ng-model="dBuilding.unitTypeTargeted" data-html="1" ng-options="unitType.label for unitType in unitTypeTargeted" bs-select>
+        Unit Type Targeted<span class="caret"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group has-feedback" ng-class="{'has-error': form.size.$invalid, 'has-success': !form.size.$invalid}">
+    <label for="inputSize" class="col-sm-3 control-label">Size:</label>
+    <div class="col-sm-9">
+      <input type="text" ng-model="dBuilding.size" name="size" id="size" class="form-control" required="required">
+      <span ng-class="{'glyphicon-remove': form.size.$invalid, 'glyphicon-ok': !form.size.$invalid}" class="glyphicon form-control-feedback"></span>
+    </div>
+  </div>
+
+</form>

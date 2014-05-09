@@ -32,6 +32,10 @@ angular
         templateUrl: 'views/building.html',
         controller: 'BuildingCtrl'
       })
+      .when('/defensive-building', {
+        templateUrl: 'views/defensive-building.html',
+        controller: 'DefensiveBuildingCtrl'
+      })
       .otherwise({
         redirectTo: '/main'
       });

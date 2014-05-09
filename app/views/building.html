@@ -1,14 +1,30 @@
 
-<form>
-<div class="form-group">
-  <label for="inputBuildingType" class="col-sm-2 control-label">BuildingType:</label>
-  <div class="col-sm-2">
+<form novalidate class="form-horizontal" role="form" name="form">
 
-    <button type="button" class="btn btn-default" ng-model="selectedBuildingType" data-html="1" ng-options="buildingType.label for buildingType in buildingTypeSelectObject" bs-select>
-      Building Type <span class="caret"></span>
-    </button>
-
+  <div class="form-group has-feedback" ng-class="{'has-error': form.attackSpeed.$invalid, 'has-success': !form.attackSpeed.$invalid}">
+    <label for="attackSpeed" class="col-sm-3 control-label">Attack Speed</label>
+    <div class="col-sm-9">
+      <input required ng-model="attackSpeed" type="number" class="form-control" name="attackSpeed" placeholder="Attack Speed">
+      <span ng-class="{'glyphicon-remove': form.attackSpeed.$invalid, 'glyphicon-ok': !form.attackSpeed.$invalid}" class="glyphicon form-control-feedback"></span>
+    </div>
   </div>
-</div>
+
+  <div class="form-group has-feedback" ng-class="{'has-error': form.damageType.$invalid, 'has-success': !form.damageType.$invalid}">
+    <label for="inputDamageType" class="col-sm-3 control-label">DamageType:</label>
+    <div class="col-sm-9">
+      <input type="text" ng-model="damageType" name="damageType" id="damageType" class="form-control" >
+      <span ng-class="{'glyphicon-remove': form.damageType.$invalid, 'glyphicon-ok': !form.damageType.$invalid}" class="glyphicon form-control-feedback"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputBuildingType" class="col-sm-3 control-label">BuildingType</label>
+    <div class="col-sm-9">
+      <button data-placeholder="Select Building Type" type="button" class="btn btn-default" ng-model="building.type" data-html="1" ng-options="buildingType.label for buildingType in buildingTypeSelectObject" bs-select>
+        Building Type <span class="caret"></span>
+      </button>
+    </div>
+  </div>
+
+
 </form>
-{{bType}}
