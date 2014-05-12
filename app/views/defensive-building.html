@@ -36,12 +36,14 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group has-feedback" ng-class="{'has-error': form.unitTypeTargeted.$invalid, 'has-success': !form.unitTypeTargeted.$invalid}">
     <label for="unitTypeTargeted" class="col-sm-3 control-label">Unit Type Targeted</label>
     <div class="col-sm-9">
-      <button data-placeholder="Select Unit Type Targeted " type="button" class="btn btn-default" ng-model="dBuilding.unitTypeTargeted" data-html="1" ng-options="unitType.label for unitType in unitTypeTargeted" bs-select>
-        Unit Type Targeted<span class="caret"></span>
-      </button>
+    <select required name="unitTypeTargeted" id="unitTypeTargeted" class="form-control" required="required"
+      ng-model="dBuilding.unitTypeTargeted" ng-selected="dBuilding.unitTypeTargeted"
+      ng-options="unitType.value as unitType.label for unitType in unitTypeTargeted">
+    </select>
+    <span ng-class="{'glyphicon-remove': form.unitTypeTargeted.$invalid, 'glyphicon-ok': !form.unitTypeTargeted.$invalid}" class="glyphicon form-control-feedback"></span>
     </div>
   </div>
 
@@ -50,6 +52,88 @@
     <div class="col-sm-9">
       <input type="text" ng-model="dBuilding.size" name="size" id="size" class="form-control" required="required">
       <span ng-class="{'glyphicon-remove': form.size.$invalid, 'glyphicon-ok': !form.size.$invalid}" class="glyphicon form-control-feedback"></span>
+    </div>
+  </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">Levels  <i ng-click="addLevel()" class="fa fa-plus pull-right level-colapse"></i></div>
+    <div class="panel-body">
+      <span ng-repeat="(lvId, lv) in dBuilding.levels">
+
+      <div class="panel panel-info">
+      <div class="panel-heading">Level {{getLevelLabel(lvId)}} <i ng-show="lv{{lvId}}" ng-click="toggleLevel(lvId)" class="fa fa-chevron-right pull-right level-colapse"></i> <i ng-hide="lv{{lvId}}" ng-click="toggleLevel(lvId)" class="fa fa-chevron-down pull-right level-colapse"></i></div>
+        <div class="panel-body" ng-hide="lv{{lvId}}">
+
+          <div class="form-group has-feedback" ng-class="{'has-error': form.damagePerSecond{{lvId}}.$invalid, 'has-success': !form.damagePerSecond{{lvId}}.$invalid}">
+            <label for="damagePerSecond{{lvId}}" class="col-sm-3 control-label two-line-field">Damage Per Second:</label>
+            <div class="col-sm-9">
+              <input type="text" ng-model="lv.damagePerSecond" name="damagePerSecond" dynamic-name="lvId" id="damagePerSecond{{lvId}}" class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.damagePerSecond{{lvId}}.$invalid, 'glyphicon-ok': !form.damagePerSecond{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{'has-error': form.damagePerShot{{lvId}}.$invalid, 'has-success': !form.damagePerShot{{lvId}}.$invalid}">
+            <label for="inputDamagePerShot{{LvId}}" class="col-sm-3 control-label">DamagePerShot:</label>
+            <div class="col-sm-9">
+              <input type="text" ng-model="lv.damagePerShot" name="damagePerShot" id="damagePerShot{{lvId}}" dynamic-name="lvId"  class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.damagePerShot{{lvId}}.$invalid, 'glyphicon-ok': !form.damagePerShot{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{'has-error': form.hitpoints{{lvId}}.$invalid, 'has-success': !form.hitpoints{{lvId}}.$invalid}">
+            <label for="inputHitpoints{{LvId}}" class="col-sm-3 control-label">Hitpoints:</label>
+            <div class="col-sm-9">
+              <input type="text" ng-model="lv.hitpoints" name="hitpoints" id="hitpoints{{lvId}}" dynamic-name="lvId" class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.hitpoints{{lvId}}.$invalid, 'glyphicon-ok': !form.hitpoints{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+
+          <div class="form-group has-feedback" ng-class="{'has-error': form.costToLoad{{lvId}}.$invalid, 'has-success': !form.costToLoad{{lvId}}.$invalid}">
+            <label for="inputcostToLoad{{LvId}}" class="col-sm-3 control-label">Cost To Load:</label>
+            <div class="col-sm-9">
+              <input type="text" ng-model="lv.costToLoad" name="costToLoad" id="costToLoad{{lvId}}" dynamic-name="lvId" class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.costToLoad{{lvId}}.$invalid, 'glyphicon-ok': !form.costToLoad{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+         <div class="form-group has-feedback" ng-class="{'has-error': form.cost{{lvId}}.$invalid, 'has-success': !form.cost{{lvId}}.$invalid}">
+            <label for="inputcost{{LvId}}" class="col-sm-3 control-label">Cost:</label>
+            <div class="col-sm-9">
+              <input type="text" ng-model="lv.cost" name="cost" id="cost{{lvId}}" dynamic-name="lvId" class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.cost{{lvId}}.$invalid, 'glyphicon-ok': !form.cost{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{'has-error': form.buildTime{{lvId}}.$invalid, 'has-success': !form.buildTime{{lvId}}.$invalid}">
+            <label for="inputbuildTime{{LvId}}" class="col-sm-3 control-label">Build Time:</label>
+            <div class="col-sm-9">
+              <input type="text" ng-model="lv.buildTime" name="buildTime" id="buildTime{{lvId}}" dynamic-name="lvId" class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.buildTime{{lvId}}.$invalid, 'glyphicon-ok': !form.buildTime{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{'has-error': form.experienceGained{{lvId}}.$invalid, 'has-success': !form.experienceGained{{lvId}}.$invalid}">
+            <label for="inputexperienceGained{{LvId}}" class="col-sm-3 control-label">Experience Gained:</label>
+            <div class="col-sm-9">
+              <input type="text" ng-model="lv.experienceGained" name="experienceGained" id="experienceGained{{lvId}}" dynamic-name="lvId" class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.experienceGained{{lvId}}.$invalid, 'glyphicon-ok': !form.experienceGained{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{'has-error': form.townHallLevelRequired{{lvId}}.$invalid, 'has-success': !form.townHallLevelRequired{{lvId}}.$invalid}">
+            <label for="inputtownHallLevelRequired{{LvId}}" class="col-sm-3 control-label">Town Hall Level Required:</label>
+            <div class="col-sm-9">
+              <input type="number" ng-model="lv.townHallLevelRequired" name="townHallLevelRequired" id="townHallLevelRequired{{lvId}}" dynamic-name="lvId" class="form-control" required="required">
+              <span ng-class="{'glyphicon-remove': form.townHallLevelRequired{{lvId}}.$invalid, 'glyphicon-ok': !form.townHallLevelRequired{{lvId}}.$invalid}" class="glyphicon form-control-feedback"></span>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      </span>
     </div>
   </div>
 

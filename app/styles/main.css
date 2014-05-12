@@ -117,3 +117,12 @@ body {
 .top-name {
   margin-left: 80px;
 }
+
+.level-colapse {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.two-line-field {
+  margin-top: -10px;
+}
